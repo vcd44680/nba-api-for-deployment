@@ -1,2 +1,2 @@
-pip install nba_api
-pip install fastapi
+pip install nba_api;
+pip install fastapi;
