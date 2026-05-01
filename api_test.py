@@ -6,8 +6,26 @@ from nba_api.stats.endpoints import commonteamroster
 from nba_api.stats.endpoints import commonallplayers
 from nba_api.stats.endpoints import teaminfocommon
 from fastapi.middleware.cors import CORSMiddleware
+import redis
+import json
+import requests
+
 
 app = FastAPI()
+
+r = redis.Redis.from_url(redis://red-d7q3791ugtpc73al2em0:6379)
+
+def cached_get(url):
+    cached = r.get(url)
+
+    if cached:
+        return json.loads(cached)
+
+    data = requests.get(url).json()
+
+    r.setex(url, 86400, json.dumps(data))
+
+    return data
 
 app.add_middleware(
     CORSMiddleware,
