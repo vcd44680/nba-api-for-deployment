@@ -1,2 +1,5 @@
-pip install nba_api;
-pip install fastapi;
+fastapi
+uvicorn
+nba_api
+psycopg2-binary
+gunicorn
