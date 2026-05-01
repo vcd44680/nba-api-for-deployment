@@ -13,7 +13,7 @@ import requests
 
 app = FastAPI()
 
-r = redis.Redis.from_url(redis://red-d7q3791ugtpc73al2em0:6379)
+r = redis.Redis.from_url("redis://red-d7q3791ugtpc73al2em0:6379")
 
 def cached_get(url):
     cached = r.get(url)
